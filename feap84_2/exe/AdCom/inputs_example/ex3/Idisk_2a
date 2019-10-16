@@ -1,0 +1,57 @@
+FEAP * * Example 3.  Circular Disk: Basic inputs
+  19 12 1 2 2 4
+
+COORdinates
+  1   1   0.0000       0.0000
+  5   0   1.0000       0.0000
+  6   1   0.0000       0.2500
+  8   1   0.4500       0.2000
+ 10   0   0.9239       0.3827
+ 11   1   0.0000       0.5000
+ 13   1   0.4000       0.4000
+ 15   0   0.7010       0.7010
+ 16   0   0.0000       0.7500
+ 17   0   0.2913       0.6869
+ 18   0   0.3827       0.9239
+ 19   0   0.0000       1.0000
+             ! Blank termination record
+ELEMents NODEs=4 TYPE=QUADrilateral
+  1 1 1  1  2  7  6
+  5 1 1  6  7 12 11
+  9 1 1 11 12 17 16
+ 10 1 1 12 13 14 17
+ 11 1 1 14 15 18 17
+ 12 0 1 16 17 18 19
+           ! Blank termination record
+
+BOUNdary restraint codes
+  1 1  1 -1
+  5 0  0  1
+  6 5 -1  0
+ 19 0  1  0
+           ! Blank termination record
+
+FORCes on nodes
+ 19 0 0 -5.0
+           ! Blank termination record
+
+
+MATErial,1
+  SOLId
+    ELAStic ISOTropic 10000 0.25  ! E and nu
+    DENSity data      0.1         ! rho
+    QUADrature data 2 2
+           ! Blank termination record
+END
+
+BATCH
+  TANG,,1
+  DISPlacement ALL
+  STRESs       ALL
+  REACtion     ALL
+  PLOT  MESH
+  PLOT  CONT   2
+END
+
+INTEractive
+STOP

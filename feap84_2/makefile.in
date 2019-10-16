@@ -1,0 +1,145 @@
+#------------------------------------------------------------------------
+# To use this makefile the path for "$(FEAPHOME8_4)" must be set using
+#   setenv FEAPHOME8_4=/....            (in .chrc or .tchrc)  or
+#   export FEAPHOME8_4=/....            (in .bashrc or file used)
+# N.B. Information after the slash defines to FEAP directories. 
+#------------------------------------------------------------------------
+# Set include file type to use: integer4 for 32 bit machines
+#                               integer8 for 64 bit machines
+
+# Use of integer8 files sets pointers to be integer*8 and all other
+# integers to be integer*4.  This limits the size of any single array to
+# an integer*4 value (approx 4 GByte).
+
+# Use of integer4 files sets all integers (including pointers) to be
+# integer*4.
+
+# N.B. If a compiler option is used that sets ALL integers to be
+#      integer*8, it is necessary to reset the parameter 'ipr = 1'
+#      in file 'feap84.f' located in the 'main' directory.
+#
+#------------------------------------------------------------------------
+
+# IFAM: those two libs seem to be unused 
+# arpack archive library
+#   ARCHIVELIB = $(FEAPHOME8_4)/packages/arpack/archive/archivelib.a
+# parpack library
+#   ARPACKLIB = $(FEAPHOME8_4)/packages/arpack/arpacklib.a
+
+# Local lapack library (use if you do not have lapack already)
+#  LAPACKLIB = $(FEAPHOME8_4)/packages/lapack/lapacklib.a
+
+# Local blas library
+#  BLASLIB   = $(FEAPHOME8_4)/packages/blas/blaslib.a    
+
+#------------------------------------------------------------------------
+# Location of feap include files
+
+# FINCLUDE = $(FEAPHOME8_4)/include -I$(FEAPHOME8_4)/include/integer4
+  FINCLUDE = $(FEAPHOME8_4)/include -I$(FEAPHOME8_4)/include/integer8
+# CINCLUDE = 
+
+#------------------------------------------------------------------------
+# Which compilers to use (Set compiler names available on your computer)
+
+# Parallel MPI Build
+
+  FFMPI = $(PETSC_DIR)/$(PETSC_ARCH)/bin/mpif90
+  CCMPI = $(PETSC_DIR)/$(PETSC_ARCH)/bin/mpicc
+
+# Parallel FE2 Build
+
+#  FFE2 = /usr/local/openmpi/bin/mpif90
+#  CCE2 = /usr/local/openmpi/bin/mpicc 
+
+ FFE2 = $(FEAPHOME8_4)/../petsc-3.4.3/linux-gnu-intel/bin/mpif90
+ CCE2 = $(FEAPHOME8_4)/../petsc-3.4.3/linux-gnu-intel/bin/mpicc
+
+# Serial build
+
+#  FF = gfortran
+  CC = gcc
+
+# Common serial options
+
+# FF = gfortran
+# CC = gcc
+
+ FF = ifort                         # Intel compiler
+# CC = icc                           # Intel compiler
+
+#------------------------------------------------------------------------
+# What optimization level to use
+
+# Gnu: gfortran/gcc compilers
+
+# FFOPTFLAG = -O3 -ftree-vectorize -Wall
+# CCOPTFLAG = -O3 -ftree-vectorize -Wall
+
+# FFOPTFLAG = -g -O3 -ftree-vectorize -Wall
+# CCOPTFLAG = -g -O3 -ftree-vectorize -Wall
+
+# FFOPTFLAG = -O2 -Wall
+# CCOPTFLAG = -O2 -Wall
+
+# FFOPTFLAG = -Wall
+# CCOPTFLAG = -Wall
+
+#  FFOPTFLAG = -O2 -Wall
+#  CCOPTFLAG = -O2 -Wall
+
+# Intel: ifort/icc compilers
+
+# FFOPTFLAG = -O2 -Warn all -g
+# CCOPTFLAG = -O2 -Wall -g
+
+# IFAM
+  FFOPTFLAG = -O2 -g
+  CCOPTFLAG = -O2 -g
+
+#------------------------------------------------------------------------
+# Source Types (generally this is blank)
+
+   FSOURCE = 
+   CSOURCE = 
+
+#------------------------------------------------------------------------
+# Source Extender (generally this just 'f' and 'c')
+
+   FEXT = f
+   CEXT = c
+
+#------------------------------------------------------------------------
+# Other options to be used by the compiler (generally this is blank)
+
+  FOPTIONS =
+  COPTIONS =
+
+#------------------------------------------------------------------------
+# What options to be used by the loader (Set to the location of your
+# X11 librarys; leave the -lm at the end to load the math librarys).
+
+# LDOPTIONS = -lm
+# LDOPTIONS = -L/usr/X11R6/lib   -lX11 -lm
+#  LDOPTIONS = -L/usr/X11R6/lib -lX11  -lblas -llapack -lm
+# LDOPTIONS = -L/usr/X11R6/lib   -L/sw/lib -lX11 -lm -ljpeg
+# LDOPTIONS = -L/usr/X11R6/lib64 -lX11 -lm
+
+# IFAM: this is for the none parallel version
+LDOPTIONS = -L/usr/X11R6/lib64 -lX11 -lm -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
+LDOPTIONSFE2 = $(LDOPTIONS)
+
+# Loader options for FE2 build
+#  LDOPTIONSFE2 = -L/usr/local/openmpi/lib/openmpi $(LDOPTIONS)
+ LDOPTIONSFE2 = -L$(PETSC_DIR)/$(PETSC_ARCH)/lib $(LDOPTIONS)
+
+#------------------------------------------------------------------------
+# What archiving to use
+  AR = ar rv
+
+#------------------------------------------------------------------------
+# Archive name.
+
+  ARFEAP = $(FEAPHOME8_4)/Feap8_4.a
+
+#------------------------------------------------------------------------

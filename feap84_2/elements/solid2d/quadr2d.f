@@ -1,0 +1,91 @@
+c$Id:$
+      subroutine quadr2d(d,stiff)
+
+c      * * F E A P * * A Finite Element Analysis Program
+
+c....  Copyright (c) 1984-2014: Regents of the University of California
+c                               All rights reserved
+
+c-----[--.----+----.----+----.-----------------------------------------]
+c     Modification log                                Date (dd/mm/year)
+c       Original version                                    11/11/2008
+c       1. Remove 'nel' from argument on 'quadr2d'          23/01/2009
+c       2. Set quadrature from d(5))                        26/03/2009
+c       3. Use 'stiff' for 6-7 node triangle order          11/12/2012
+c-----[--.----+----.----+----.-----------------------------------------]
+c      Purpose: 2-D Quadrature formulae
+
+c      Inputs:
+c         d(*)      - Element parameters
+c         stiff     - Flag for stiffness or mass order
+
+c      Outputs:
+c         lint      - Number of quadrature points
+c-----[--.----+----.----+----.-----------------------------------------]
+      implicit   none
+
+      include   'eldata.h'
+      include   'pmod2d.h'
+      include   'qudshp.h'
+
+      logical    stiff
+      integer    l
+      real*8     d(*)
+
+c     Compute Gauss quadrature points and weights for 2-d elements
+
+      quad   = .false.
+      bsplfl = .false.
+
+      if(nel.eq.3) then             ! 3-node triangle
+        if(d(182).gt.0.0d0) then
+          call tint2dn(nel,lint,el2)
+        else
+          if(stype.le.2 .and. stiff) then
+            l =  1
+          else
+            l = -3
+          endif
+          call tint2d (l,lint,el2)
+        endif
+        npm  =  1
+      elseif(nel.eq.6 .or. nel.eq.7 ) then
+        if(d(182).gt.0.0d0) then
+          call tint2dn(nel,lint,el2)
+        else
+          if(stiff) then
+            l =  3
+          else
+            l =  7
+          endif
+          call tint2d (l,lint,el2)
+        endif
+        if(nel.eq.6) then           ! 6-node triangle
+          npm =  1
+        else                        ! 7-node triangle
+          npm =  3
+        endif
+        if(nint(d(189)).eq.3) then  ! Check for B-spline triangle
+          bsplfl = .true.
+        endif
+      else                          ! Quadrilaterals
+        l = min(5,nint(d(5)))
+        if(nel.le.4) then           ! 4-node quadrilateral
+          npm = 1
+          if(l.eq.0) l = 2
+        elseif(nel.le.9) then       ! 8 & 9-node quadrilateral
+          npm = 3
+          if(l.eq.0) l = 3
+        else                        ! 16-node quadrilateral
+          npm = 6
+          if(l.eq.0) l = 4
+        endif
+        if(nint(d(182)).gt.0) then
+          call int2dn(nel,lint,sg2)
+        else
+          call int2d(l,lint,sg2)
+        endif
+        quad = .true.
+      endif
+
+      end

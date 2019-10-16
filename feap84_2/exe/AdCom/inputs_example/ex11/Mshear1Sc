@@ -1,0 +1,6 @@
+MATErial       1
+SOLId elmt     0   0   0   0
+    FINITE
+    MIXED
+    ELAStic NEOHook 3000.0 0.499999
+     

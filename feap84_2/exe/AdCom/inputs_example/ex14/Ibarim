@@ -1,0 +1,65 @@
+feap * * 1-d axial bar
+  0 0 0 1 1 2
+
+mate 1
+  solid
+    elastic isotropic 100
+    density  mass      1
+    transient explicit
+    mass lump
+
+mate 2
+  solid
+    elastic isotropic 100
+    density mass       1
+    transient implicit
+    mass lump
+
+block
+  cart 100 0 0 0 2
+    1  0.0
+    2 100.0
+
+ebou
+ 1 100 1 
+
+load prop 1
+eforc
+  1 0 100
+
+load end
+
+parameter
+  pi = acos(-1)
+
+end mesh
+
+batch
+  prop,,1
+end
+1 2  0 pi  0  0  1 pi  0
+
+batch
+  plot dofs 0 1 0
+  plot deform
+end
+
+
+batch
+  transient
+  dt,,0.05
+  
+  mass lump
+  loop,,432
+    time
+    loop,,2
+      tang,,1
+    next
+    plot wipe
+    plot mesh 1
+  next
+end
+
+inter
+stop
+    

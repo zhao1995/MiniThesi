@@ -1,0 +1,74 @@
+feap * * Test on truss with tension only members
+  0 0 0 2 2 2
+
+parameters
+  e = 30e3
+  ac = 2
+  at = 1.5
+  ap = 1.5
+  ad = 1
+
+mate 1
+  truss
+    elastic isotropic e
+    cross section     ac
+
+mate 2
+  truss
+    elastic isotropic e
+    cross section     at
+
+mate 3
+  truss
+    elastic isotropic e
+    cross section     ap
+
+mate 4
+  truss
+    elastic isotropic e
+    cross section     ad
+    tension
+
+coord
+  1 1  0  0
+  4 0 90  0
+  5 0 30 35
+  6 0 60 35
+
+elem
+  1 0 1 1 5
+  2 0 1 5 6
+  3 0 1 6 4
+  4 0 2 1 2
+  5 0 2 2 3
+  6 0 2 3 4
+  7 0 3 2 5
+  8 0 3 3 6
+  9 0 4 2 6
+ 10 0 4 3 5
+
+boun
+  1 0 1 1
+  4 0 0 1
+
+forc
+  2 0 0 -10
+
+end
+
+batch
+  plot mesh
+  loop,,10
+    tang,,1
+  next
+  plot estre 1
+  plot node
+  plot boun
+  plot load
+end
+
+
+
+inter
+
+stop

@@ -1,0 +1,89 @@
+10
+
+dir
+16
+svn://134.130.89.127/svn/feap84/ver84/elements
+svn://134.130.89.127/svn
+
+
+
+2014-02-11T17:07:18.398698Z
+1
+am979653
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8c96d32c-233a-4768-84d4-190cb47f4bc7
+
+thermal
+dir
+
+torsion
+dir
+
+makefile
+file
+
+
+
+
+2016-06-03T11:59:30.278464Z
+86e3e7c63ebb05a8349274d8b1303b44
+2014-02-11T17:07:18.398698Z
+1
+am979653
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1602
+
+couple3d
+dir
+
+material
+dir
+
+solid1d
+dir
+
+solid2d
+dir
+
+solid3d
+dir
+
+frame
+dir
+
+shells
+dir
+

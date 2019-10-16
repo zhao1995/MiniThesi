@@ -1,0 +1,51 @@
+feap * * test on arc-length options
+  0 0 0 2 3 2
+
+material
+  frame
+    elastic isotopic 1000 0.25
+    cross section    1  0.01
+    finite
+
+param
+  n = 10
+
+block
+  polar  2*n
+    1 100 60
+    2 100 120
+
+boun
+    1 0 1 1 0
+2*n+1 0 1 1 0
+
+forc
+  n+1 0 0 -1 0
+
+disp
+  n+1 0 0 -1
+
+end
+
+batch
+  arcl,,5
+end
+ 1                ! No damping
+ n+1 2  -1        ! Node DOF U_disp
+
+batch
+  plot defo
+  dt,,1
+  loop,,50
+    time
+    loop,,20
+      tang,,1
+    next
+    plot mesh
+    plot load
+  next
+end
+
+inter
+
+stop

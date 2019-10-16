@@ -1,0 +1,19 @@
+batch
+! echo on
+! debug
+  noprint
+  print off
+  fe2  start sw              ! Compute projection array (sw = isw parameter)
+  loop,infinite              ! Permits infinite solution iterations
+    fe2  get                 ! Get F from macro solution: Input U, H
+    if sw-12                 ! Test for time step (isw = 12)
+      noprint                ! Do nothing statement needed
+    else sw-3                ! For all 3 <= isw < 12
+      loop,,8                ! Iterate local solution
+        tang,,1
+      next                   ! End local unit problewm
+    endif
+    fe2  send                ! Send stresses to macro solution: Out U,H
+  next                       ! Next macro solution
+end
+

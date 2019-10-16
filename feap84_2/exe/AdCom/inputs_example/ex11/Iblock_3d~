@@ -1,0 +1,55 @@
+feap * * Three dimensional block
+  0 0 0 3 3 8
+
+mate
+  solid
+    elastic isotropic 10000 0.3
+
+
+parameter
+  n = 8
+  a = 4
+  p = 10
+
+    
+block
+  cart 4 10 60
+  brick 8
+     1 0 0 0
+     2 4 0 0
+     3 4 10 0
+     4 0 10 0
+     5 0 0 60
+     6 4 0 60
+     7 4 10 60
+     8 0 10 60
+
+ebou
+  1 0 1 0 0
+  2 0 0 1 0
+  3 0 0 0 1
+
+csurf
+  surface
+    1 0 0 a -p
+    2 a 0 a -p
+    3 a a a  p
+    4 0 a a  p
+
+end
+
+batch
+  plot perspective
+  plot hide
+end
+
+batch
+  loop,,3
+    tang,,1
+  next
+  plot stre 3
+end
+
+inter
+
+stop

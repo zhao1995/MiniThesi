@@ -1,0 +1,24 @@
+
+  --------------------------------- START OF FEAP LOG ----------------------------------
+
+  INPUT FILE NAME: Ipatch_4el                                                                                                                      
+
+  MESH INPUT RECORDS
+  ------------------
+     PARAMETER                      
+     MATErial        1              
+     COORdinates                    
+     ELEMents                       
+     BOUNdary        restraints     
+     FORCes                         
+     END                            
+
+  --------------------------------- END OF MESH INPUTS ---------------------------------
+
+
+  SOLUTION SUMMARY
+  ----------------
+
+  Load    Total     Solution      Time     Residual Norm        Energy Norm     CPU Time
+  Step  Tang+Forms      Time      Incr.  Initial     Final   Initial     Final (Seconds)
+  --------------------------------------------------------------------------------------

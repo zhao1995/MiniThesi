@@ -1,0 +1,142 @@
+feap * * explicit-implicit solution on block
+  0 0 0 2 2 4
+
+mate 1
+  solid
+    elastic isotropic 100 0.25
+    density  mass      1
+    mass lump
+    transient implicit
+
+mate 2
+  solid
+    elastic isotropic 100 0.25
+    density mass       1
+    mass lump
+    transient implicit
+
+parameter
+  n = 20
+
+block
+  cart n n 0 0 2
+    quad 4
+      1 0.0  0.0
+      2 0.0 -4.0
+      3 8.0 -8.0
+      4 4.0  0.0
+
+block
+  cart n n 0 0 2
+    quad 4
+      1  0.0 -4.0
+      2  0.0 -20.0
+      3 20.0 -20.0
+      4  8.0 -8.0
+
+block
+  cart n n 0 0 2
+    quad 4
+      1  8.0  -8.0
+      2 20.0 -20.0
+      3 20.0   0.0
+      4  4.0   0.0
+
+block
+  cart n n 0 0 1
+    quad 4
+      1  0.0 -20.0
+      2  0.0 -40.0
+      3 20.0 -40.0
+      4 20.0 -20.0
+
+block
+  cart n n 0 0 1
+    quad 4
+      1 20.0 -20.0
+      2 20.0 -40.0
+      3 40.0 -40.0
+      4 40.0 -20.0
+
+block
+  cart n n 0 00 1
+    quad 4
+      1 20.0   0.0
+      2 20.0 -20.0
+      3 40.0 -20.0
+      4 40.0   0.0
+
+
+ebou
+  1   0 1 0
+  1  40 1 0
+  2 -40 0 1
+
+cforc
+  node 0.0 0.0 0.0 -1.0
+
+
+ explicit implicit
+   auto
+!  mate 1 0
+
+param
+  pi = acos(-1.0)
+
+end
+
+tie
+
+
+batch
+  prop
+end
+ 1 2 0 3 0 0 1 pi/3  0
+
+batch
+  trans newmark 0.25 0.50 3
+! dt,,0.2/12.5 ! 0.075
+  dt,,0.1   25
+  dt,,0.01875
+  dt,,0.015
+  dt,,0.0375
+  dt,,0.075
+end
+
+
+batch
+! maxe,,0.75
+! imex, ! ,1.0  0.75
+  plot range -0.1 0
+end
+
+inter
+
+batch
+  loop,,1000
+    time,,7.5
+    loop,,3
+      tang,,1
+    next
+    plot stre 2 0 1
+  next
+end
+
+inter
+
+stop
+
+
+batch
+  loop,,100000000
+    time,,7.5
+    loop,,3
+      tang,,1
+    next
+    plot stre 2
+  next
+end
+
+
+inter
+stop

@@ -1,0 +1,50 @@
+
+  --------------------------------- START OF FEAP LOG ----------------------------------
+
+  INPUT FILE NAME: Iex13                                                                                                                           
+
+  MESH INPUT RECORDS
+  ------------------
+     noprint                        
+     parameters                     
+     mate            1              
+     mate            2              
+     parameter                      
+     block           1              
+     block           2              
+     block           3              
+     block           4              
+     block           5              
+     block           6              
+     block           7              
+     block           8              
+     block           9              
+     block           10             
+     block           11             
+     block           12             
+     block           13             
+     block           14             
+     block           15             
+     block           16             
+     block           17             
+     block           18             
+     block           19             
+     block           20             
+     block           21             
+     block           22             
+     block           23             
+     block           24             
+     block           25             
+     periodic        cauchy         
+     cboun                          
+     end                            
+
+  --------------------------------- END OF MESH INPUTS ---------------------------------
+
+
+  SOLUTION SUMMARY
+  ----------------
+
+  Load    Total     Solution      Time     Residual Norm        Energy Norm     CPU Time
+  Step  Tang+Forms      Time      Incr.  Initial     Final   Initial     Final (Seconds)
+  --------------------------------------------------------------------------------------

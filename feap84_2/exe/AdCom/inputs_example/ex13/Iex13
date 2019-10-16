@@ -1,0 +1,237 @@
+feap * * Example 13: Periodic boundary conditions on rectangular block
+  0 0 0 2 2 4
+
+noprint
+
+parameters
+  eb = 2000
+  nb = 0.25
+  em = 400
+  nm = 0.25
+
+mate 1
+  solid
+    elastic isotropic eb nb
+
+mate 2
+  solid
+    elastic isotropic em nm
+
+parameter
+  b = 3.25
+  h = 2.5
+  x = 3.0
+  s = 0.25
+  y2 = 1.5
+  y3 = 1.0
+  n1 = 24
+  n2 = 8
+  n3 = 6
+  n4 = 3
+
+block 1
+  cart n4 n2 0 0 1
+    1 -b -h
+    2 -x -h
+    3 -x -y2
+    4 -b -y2
+
+block 2
+  cart n1 n2 0 0 1
+   1 -x -h
+   2 -s -h
+   3 -s -y2
+   4 -x -y2
+
+block 3
+  cart n3 n2 0 0 2
+   1 -s -h
+   2  s -h
+   3  s -y2
+   4 -s -y2
+
+block 4
+  cart n1 n2 0 0 1
+   1  s -h
+   2  x -h
+   3  x -y2
+   4  s -y2
+
+block 5
+  cart n4 n2 0 0 1
+    1  x -h
+    2  b -h
+    3  b -y2
+    4  x -y2
+
+block 6
+  cart n4 n3 0 0 2
+    1 -b -y2
+    2 -x -y2
+    3 -x -y3
+    4 -b -y3
+
+block 7
+  cart n1 n3 0 0 2
+   1 -x -y2
+   2 -s -y2
+   3 -s -y3
+   4 -x -y3
+
+block 8
+  cart n3 n3 0 0 2
+   1 -s -y2
+   2  s -y2
+   3  s -y3
+   4 -s -y3
+
+block 9
+  cart n1 n3 0 0 2
+   1  s -y2
+   2  x -y2
+   3  x -y3
+   4  s -y3
+
+block 10
+  cart n4 n3 0 0 2
+    1  x -y2
+    2  b -y2
+    3  b -y3
+    4  x -y3
+
+block 11
+  cart n4 n2 0 0 2
+    1 -b -y3
+    2 -x -y3
+    3 -x  y3
+    4 -b  y3
+
+block 12
+  cart n1 n2 0 0 1
+   1 -x -y3
+   2 -s -y3
+   3 -s  y3
+   4 -x  y3
+
+block 13
+  cart n3 n2 0 0 1
+   1 -s -y3
+   2  s -y3
+   3  s  y3
+   4 -s  y3
+
+block 14
+  cart n1 n2 0 0 1
+   1  s -y3
+   2  x -y3
+   3  x  y3
+   4  s  y3
+
+block 15
+  cart n4 n2 0 0 2
+    1  x -y3
+    2  b -y3
+    3  b  y3
+    4  x  y3
+
+block 16
+  cart n4 n3 0 0 2
+    1 -b  y3
+    2 -x  y3
+    3 -x  y2
+    4 -b  y2
+
+block 17
+  cart n1 n3 0 0 2
+   1 -x  y3
+   2 -s  y3
+   3 -s  y2
+   4 -x  y2
+
+block 18
+  cart n3 n3 0 0 2
+   1 -s  y3
+   2  s  y3
+   3  s  y2
+   4 -s  y2
+
+block 19
+  cart n1 n3 0 0 2
+   1  s  y3
+   2  x  y3
+   3  x  y2
+   4  s  y2
+
+block 20
+  cart n4 n3 0 0 2
+    1  x  y3
+    2  b  y3
+    3  b  y2
+    4  x  y2
+
+block 21
+  cart n4 n2 0 0 1
+    1 -b  y2
+    2 -x  y2
+    3 -x  h
+    4 -b  h
+
+
+block 22
+  cart n1 n2 0 0 1
+   1 -x  y2
+   2 -s  y2
+   3 -s  h
+   4 -x  h
+
+block 23
+  cart n3 n2 0 0 2
+   1 -s  y2
+   2  s  y2
+   3  s  h
+   4 -s  h
+
+block 24
+  cart n1 n2 0 0 1
+   1  s  y2
+   2  x  y2
+   3  x  h
+   4  s  h
+
+block 25
+  cart n4 n2 0 0 1
+    1  x  y2
+    2  b  y2
+    3  b  h
+    4  x  h
+
+periodic cauchy                 ! Displacement gradient: G
+    0.100  0.080  0.000
+    0.020 -0.055  0.000
+    0.000  0.000  0.000
+
+cboun                    ! Fix corner nodes
+  node -b -h  1 1 1
+  node  b -h  1 1 1
+  node  b  h  1 1 1
+  node -b  h  1 1 1
+
+end
+
+tie                      ! Merge blocks
+
+
+elink                    ! Link parallel boundaries
+  1 -b b
+  2 -h h
+
+
+batch
+  tang,,1
+  plot deform
+  plot stre 4        ! Shear stress
+end
+
+inter
+
+stop

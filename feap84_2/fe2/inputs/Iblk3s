@@ -1,0 +1,89 @@
+feap * * block of quads
+  0 0 0 3 3 8
+
+noprint
+mate 1
+  solid
+    small
+    srve,Itests
+    quad,,2,2,2
+
+
+parameter
+  mm = 8
+  nn = 1
+
+block
+  cart mm mm mm+nn 0 0 1
+    1 0 0 0
+    2 8 0 0
+    3 8 8 0
+    4 0 8 0
+    5 0 0 10
+    6 8 0 10
+    7 8 8 10
+    8 0 8 10
+
+
+ebou
+  3 0 1 1 1
+
+  1 0 1 0 0
+  2 0 0 1 0
+  3 0 0 0 1
+
+  3 8 0 0 1
+
+
+csurf
+  surface
+    1 0 0 10  5
+    2 8 0 10  5
+    3 8 8 10 -5
+    4 0 8 10 -5
+
+end
+
+tie
+
+
+batch
+! debug
+  rve set
+  nopr
+  prop
+  dt,,1.5
+  plot pers
+  plot hide
+end
+
+
+
+
+batch
+! debug
+  loop,,3
+    time
+    loop,,10
+      tang,,1
+    next
+    plot cont 3
+  next
+end
+
+!inter
+
+!batch
+  dt,,0.1
+  loop,,3
+    time
+    loop,,10
+      tang,,1
+    next
+    plot cont 3
+  next
+!end
+
+inter
+
+stop

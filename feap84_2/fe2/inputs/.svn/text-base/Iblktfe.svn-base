@@ -1,0 +1,77 @@
+feap * * block of quads
+  0 0 0 3 1 8
+
+noprint
+mate 1
+  thermal
+    fourier isotropic 10 0.25
+    quad,,2,2,2
+
+
+parameter
+  mm = 4
+  nn = 1
+
+block
+  cart mm mm mm+nn 0 0 1
+    1 0 0 0
+    2 8 0 0
+    3 8 8 0
+    4 0 8 0
+    5 0 0 10
+    6 8 0 10
+    7 8 8 10
+    8 0 8 10
+
+
+ebou
+  3 0 1
+  3 10 1
+
+
+edis
+  3 10 1.5
+
+end
+
+tie
+
+inter
+
+batch
+  nopr
+  prop
+  dt,,1.5
+  plot pers
+  plot hide
+end
+
+!inter
+
+batch
+! debug
+  loop,,1
+    time
+    loop,,1
+      tang,,1
+    next
+    plot cont 1
+  next
+end
+
+!inter
+
+!batch
+  dt,,0.1
+  loop,,3
+    time
+    loop,,10
+      tang,,1
+    next
+    plot pstre 6
+  next
+!end
+
+inter
+
+stop

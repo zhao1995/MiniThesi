@@ -1,0 +1,52 @@
+FEAP * * beam_notched
+,,,2,3,4
+!
+! Control record: (NUMNP) Number of nodal points, (NUMEL) Number of elements, (NUMMAT) Number of material property sets, (NDM) Space dimension of mesh, (NDF) Maximum number of unknowns per node, (NEN) Maximum number of nodes per element
+!
+MATErial,1
+  USER,1
+!
+COORdinates
+INCLude,Nodexyz0
+!
+ELEMents
+INCLude,ELEMC10
+!
+EBOU
+2,0.0,1,1,0
+2,100.0,1,1,0
+!
+EDISplacement
+2,0.0,-1.0d0,0
+2,100.0,1.0d0,0
+!  
+END
+!
+!INTE
+!
+BATCh
+  TPLOt
+END
+SUMS,1,2,0.0,1.0E-13
+DISP,,1,100.0,100.0
+!
+BATCH
+  pvie "shea.vtu"
+  OPTI
+  prop,,1
+  dt,,0.02
+  AUTO,TIME,18,26,20
+  AUTO,DT,1.0E-06,0.02
+  PARD,,,0
+  LOOP,time,1000
+    time
+    loop,iter,40
+      tang,,1
+    next,iter
+    pvie "shea.vtu"
+  NEXT,time
+END
+!
+!INTEractive
+!
+STOP

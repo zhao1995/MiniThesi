@@ -1,0 +1,9 @@
+MATErial       1
+frame elmt     0   0   0   0
+    elastic isotopic 1000 0.25
+    cross section 1 0.01
+    finite
+     
+Parameters
+  n = 10
+ 

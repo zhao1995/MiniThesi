@@ -1,0 +1,28 @@
+! Driver input routine to do mesh refinement
+
+PARAmeter
+  n = 4
+
+INCLude Islit_2d
+
+PARAmeter
+  n = 8
+
+INCLude Islit_2d
+
+PARAmeter
+  n = 16
+
+INCLude Islit_2d
+
+PARAmeter
+  n = 32
+
+INCLude Islit_2d
+
+PARAmeter
+  n = 64
+
+INCLude Islit_2d
+
+STOP

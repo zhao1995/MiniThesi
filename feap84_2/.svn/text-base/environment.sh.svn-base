@@ -1,0 +1,32 @@
+#/bin/sh
+
+# Environment for parallel feap
+
+export PETSC_DIR=$PWD/petsc-3.4.3
+export PETSC_ARCH=linux-gnu-intel
+
+# MKL
+# normal PC
+MKL_DIR=/opt/intel/mkl
+# Cluster
+#MKL_DIR=/soft/intel_12_1/mkl
+
+export MKL_DIR
+
+
+if [ -z "`cmake --version | grep 'cmake version 2.8'`" ]; then
+# cmake is not version 2.8.x
+# a faily recent cmake is required for PETSc
+#export PATH=$PWD/cmake-2.8.12.2-Linux-i386/bin:$PATH
+    export PATH=$PWD/cmake/bin:$PATH
+    export CMAKE_DIR=cmake
+fi
+
+# FEAP
+# This var is only neccessary if you want to use the original makefiles (i.e. not those under exe)
+export FEAPHOME8_4=$PWD/ver84
+
+# openmpi
+# this is only neccessary if you want to use that openmpi installation from PETSc
+#export PATH=$PETSC_DIR/linux-gnu-intel/bin:$PATH
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PETSC_DIR/linux-gnu-intel/lib

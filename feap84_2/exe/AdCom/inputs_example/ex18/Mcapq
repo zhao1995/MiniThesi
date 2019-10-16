@@ -1,0 +1,21 @@
+Parameters
+ e  = 10d8
+ nu = 0.3
+ 
+MATErial       1
+shell elmt     0   0   0   0   0   0   0
+    elastic isotropic e nu
+    thickness shell 2.36
+    load normal 284
+    finite
+     
+Parameters
+  r = 56.30
+  an = 39.0
+  s = r*sind(an)
+  h = r*cosd(an)
+  a = s*sind(45)
+  b = 0.45*s
+  c = 0.40*s
+  n = 16
+ 

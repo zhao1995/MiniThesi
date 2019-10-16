@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{350BCEBC-166A-41EF-BC5D-FED28D785E98}">
+	<Platforms>
+		<Platform Name="Win32"/>
+		<Platform Name="x64"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeCustom" Parallelization="true" Preprocess="preprocessYes" PreprocessorDefinitions="__INTEL_;_BATCH_;_NOLIC_" OpenMP="OpenMPParallelCode" F77RuntimeCompatibility="true" F77IntegerConstants="true" DebugParameter="debugParameterAll" WarnUnusedVariables="true" ByteRECL="true" LocalSavedScalarsZero="true" Traceback="true" NullPointerCheck="true" BoundsCheck="true" UninitializedVariablesCheck="true" RuntimeLibrary="rtMultiThreadedDebug" UseMkl="mklParallel"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Debug|x64">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeCustom" Parallelization="true" Preprocess="preprocessYes" PreprocessorDefinitions="__INTEL_;_BATCH_;_NOLIC_;__SHMDEBUG_" OpenMP="OpenMPParallelCode" F77RuntimeCompatibility="true" F77IntegerConstants="true" DebugParameter="debugParameterAll" WarnUnusedVariables="true" ByteRECL="true" LocalSavedScalarsZero="true" InitArrays="true" Traceback="true" NullPointerCheck="true" BoundsCheck="true" UninitializedVariablesCheck="true" RuntimeLibrary="rtMultiThreadedDebug" UseMkl="mklParallel"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|x64">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" MultiProcessorCompilation="true" Optimization="optimizeFull" Parallelization="true" Preprocess="preprocessYes" PreprocessorDefinitions="__INTEL_;_BATCH_;_NOLIC_" OpenMP="OpenMPParallelCode" F77RuntimeCompatibility="true" F77IntegerConstants="true" ByteRECL="true" LocalSavedScalarsZero="true" InitArrays="true" NullPointerCheck="true" BoundsCheck="true" UninitializedVariablesCheck="true" UseMkl="mklParallel"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd;h;inc"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath="..\..\src_int\allocation_int.for"/>
+		<File RelativePath="..\..\src\arclen.for"/>
+		<File RelativePath="..\..\src\bfgs.for"/>
+		<File RelativePath="..\..\src\contact.for"/>
+		<File RelativePath="..\..\src\cor.for"/>
+		<File RelativePath="..\..\src\crit.for"/>
+		<File RelativePath="..\..\src\csr_help.for"/>
+		<File RelativePath="..\..\src\curve.for"/>
+		<File RelativePath="..\..\src\cvuser.for"/>
+		<File RelativePath="..\..\src\cylt1.for"/>
+		<File RelativePath="..\..\src\cylt2.for"/>
+		<File RelativePath="..\..\src\cylt3.for"/>
+		<File RelativePath="..\..\src\cyltalg.for"/>
+		<File RelativePath="..\..\src_rwth\dalloc.for"/>
+		<File RelativePath="..\..\src\dplot.for"/>
+		<File RelativePath="..\..\src\dynamics.for"/>
+		<File RelativePath="..\..\src\eig1.for"/>
+		<File RelativePath="..\..\src_rwth\elmlib.for"/>
+		<File RelativePath="..\..\src\elmt01s.for"/>
+		<File RelativePath="..\..\src\elmt02s.for"/>
+		<File RelativePath="..\..\src\elmt03s.for"/>
+		<File RelativePath="..\..\src\elmt04s.for"/>
+		<File RelativePath="..\..\src\elmt05s.for"/>
+		<File RelativePath="..\..\src\elmt06s.for"/>
+		<File RelativePath="..\..\src\elmt07s.for"/>
+		<File RelativePath="..\..\src\elmt08s.for"/>
+		<File RelativePath="..\..\src\elmt09s.for"/>
+		<File RelativePath="..\..\src\elmt10s.for"/>
+		<File RelativePath="..\..\src\elmt11s.for"/>
+		<File RelativePath="..\..\src\elmt12s.for"/>
+		<File RelativePath="..\..\src\elmt13s.for"/>
+		<File RelativePath="..\..\src\elmt14s.for"/>
+		<File RelativePath="..\..\src\elmt15s.for"/>
+		<File RelativePath="..\..\src\elmt16s.for"/>
+		<File RelativePath="..\..\src\elmt17s.for"/>
+		<File RelativePath="..\..\src\elmt18s.for"/>
+		<File RelativePath="..\..\src\elmt19s.for"/>
+		<File RelativePath="..\..\src\elmt20s.for"/>
+		<File RelativePath="..\..\src\elmt21s.for"/>
+		<File RelativePath="..\..\src\elmt22s.for"/>
+		<File RelativePath="..\..\src\elmt23s.for"/>
+		<File RelativePath="..\..\src\elmt24s.for"/>
+		<File RelativePath="..\..\src\elmt25s.for"/>
+		<File RelativePath="..\..\src\elmt26s.for"/>
+		<File RelativePath="..\..\src\elmt29s.for"/>
+		<File RelativePath="..\..\src\elmt30s.for"/>
+		<File RelativePath="..\..\src\elmt31s.for"/>
+		<File RelativePath="..\..\src\elmt32s.for"/>
+		<File RelativePath="..\..\src\elmt33s.for"/>
+		<File RelativePath="..\..\src\elmt34s.for"/>
+		<File RelativePath="..\..\src\elmt45s_sshell_eas.for"/>
+		<File RelativePath="..\..\src_rwth\elmt61s.for"/>
+		<File RelativePath="..\..\src_rwth\elmt62s.for"/>
+		<File RelativePath="..\..\src_rwth\elmt63s.for"/>
+		<File RelativePath="..\..\src\ext.for"/>
+		<File RelativePath="..\..\src\feap.for"/>
+		<File RelativePath="..\..\src\feap_micro.for"/>
+		<File RelativePath="..\..\src_int\feap_shmem.for"/>
+		<File RelativePath="..\..\src\feapcfg.for"/>
+		<File RelativePath="..\..\src\feaps1.for"/>
+		<File RelativePath="..\..\src\feaps2.for"/>
+		<File RelativePath="..\..\src_rwth\feaps3.for"/>
+		<File RelativePath="..\..\src_rwth\feaps4.for"/>
+		<File RelativePath="..\..\src_rwth\feaps5.for"/>
+		<File RelativePath="..\..\src_rwth\feaps6.for"/>
+		<File RelativePath="..\..\src\feast.for"/>
+		<File RelativePath="..\..\src\fepost.for"/>
+		<File RelativePath="..\..\src_rwth\gframe.for"/>
+		<File RelativePath="..\..\src\help.for"/>
+		<File RelativePath="..\..\src\hpgl.for"/>
+		<File RelativePath="..\..\src\iniuser.for"/>
+		<File RelativePath="..\..\src_rwth\isogeo.for"/>
+		<File RelativePath="..\..\src\lanczos.for"/>
+		<File RelativePath="..\..\src\mat.for"/>
+		<File RelativePath="..\..\src\mate3d01.for"/>
+		<File RelativePath="..\..\src\mate3d02.for"/>
+		<File RelativePath="..\..\src\mate3d03.for"/>
+		<File RelativePath="..\..\src\mate3d04.for"/>
+		<File RelativePath="..\..\src\mate3d05.for"/>
+		<File RelativePath="..\..\src\mate3d06.for"/>
+		<File RelativePath="..\..\src\mate3d07.for"/>
+		<File RelativePath="..\..\src\mate3d08.for"/>
+		<File RelativePath="..\..\src\mate3d09.for"/>
+		<File RelativePath="..\..\src\mate3d10.for"/>
+		<File RelativePath="..\..\src\mate3d11.for"/>
+		<File RelativePath="..\..\src\mate3d12.for"/>
+		<File RelativePath="..\..\src\mate3d14.for"/>
+		<File RelativePath="..\..\src\mate3d15.for"/>
+		<File RelativePath="..\..\src_rwth\mate3d16.for"/>
+		<File RelativePath="..\..\src_rwth\mate3d17.for"/>
+		<File RelativePath="..\..\src\matelib3d.for"/>
+		<File RelativePath="..\..\src_rwth\module.for"/>
+		<File RelativePath="..\..\src\paraview.for"/>
+		<File RelativePath="..\..\src\pardisoint.for"/>
+		<File RelativePath="..\..\src\pbcg.for"/>
+		<File RelativePath="..\..\src\pgmres.for"/>
+		<File RelativePath="..\..\src\pgmres2.for"/>
+		<File RelativePath="..\..\src_rwth\plot.for"/>
+		<File RelativePath="..\..\src_int\plot_intel.for"/>
+		<File RelativePath="..\..\src_int\plot_intel_cw.for"/>
+		<File RelativePath="..\..\src_rwth\pmacr.for"/>
+		<File RelativePath="..\..\src\pmesh1.for"/>
+		<File RelativePath="..\..\src_rwth\pofeap.for"/>
+		<File RelativePath="..\..\src_rwth\pplotf.for"/>
+		<File RelativePath="..\..\src\precond.for"/>
+		<File RelativePath="..\..\src\reme_nl1.for"/>
+		<File RelativePath="..\..\src\reme_nl2.for"/>
+		<File RelativePath="..\..\src\remesh1.for"/>
+		<File RelativePath="..\..\src\remesh2.for"/>
+		<File RelativePath="..\..\src\remesh3.for"/>
+		<File RelativePath="..\..\src_rwth\rhinoplot.for"/>
+		<File RelativePath="..\..\src\section.for"/>
+		<File RelativePath="..\..\src\simplex_qld.for"/>
+		<File RelativePath="..\..\src\smoo_control.for"/>
+		<File RelativePath="..\..\src\smsolv.for"/>
+		<File RelativePath="..\..\src\subsp.for"/>
+		<File RelativePath="..\..\src\superluint.for"/>
+		<File RelativePath="..\..\src\tecplot.for"/>
+		<File RelativePath="..\..\src\ueigen.for"/>
+		<File RelativePath="..\..\src\unika.for"/></Filter></Files>
+	<Globals/></VisualStudioProject>

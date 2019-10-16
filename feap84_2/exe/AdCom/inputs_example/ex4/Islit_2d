@@ -1,0 +1,83 @@
+FEAP * * Tension Strip With Hole and Slit
+0,0,0,2,2,4
+
+NOPRint          ! Omit output of data to file
+
+PARAmeters
+  d=1            ! First node number
+  e=1            ! First element number
+  m=1            ! Material set number
+! n=8            ! Size of blocks 
+! N.B. Remove ! from previous record to execute with this file directly.
+
+MATErial 1
+  SOLId
+  ELAStic ISOTopic 10000 0.25
+
+EBOUndary
+  2  8 0 1 0
+  2 -8 0 1 0
+
+CBOUndary
+  node -6 0 1 0
+
+EDISplacements
+  2  8 0  0.5
+  2 -8 0 -0.5
+
+! Parameters for blocks forming each quadrant
+
+PARAm
+  c=cosd(45.0)
+  s=sind(45.0)
+  a=cosd(22.5)
+  b=sind(22.5)
+
+REGIon,1         ! Assigns 1st quadrant to region 1
+  INCLude Ihslit ! Input first quadrant
+
+PARAmeters
+  d=0            ! To make feap count nodes
+  e=0            ! To make feap count elements
+
+REGIon,2         ! Assign 2nd and 3rd quadrant
+  TRANsform      ! Reverse x axis for second quadrant
+    -1,0,0
+     0,1,0
+     0,0,1
+     0,0,0
+
+  INCLude Ihslit
+
+  TRANsform ! Reverse x,y axis for third quadrant
+    -1,0,0
+     0,-1,0
+     0,0,1
+     0,0,0
+
+  INCLude Ihslit
+
+REGIon,3    ! Assign 4th quadrant to region 3
+  TRANsform ! Reverse y axis for fourth quadrant
+     1,0,0
+     0,-1,0
+     0,0,1
+     0,0,0
+
+  INCLude Ihslit
+
+END
+TIE,REGIon,1,1
+TIE,REGIon,2,2
+TIE,REGIon,3,3
+TIE,REGIon,1,2
+TIE,REGIon,2,3
+
+BATCh
+  TANG,,1
+  PLOT DEFOrm
+  PLOT PSTRess 1 0 1  ! Principal stress 1
+  DISP COORd 2 0
+END
+INTEractive
+STOP

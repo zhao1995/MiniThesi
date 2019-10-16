@@ -1,0 +1,12 @@
+
+To use: compile the partition program and run
+
+  mpirun -np 2 partition npartitions Ifile [graphfile]
+
+The output file will consist of:
+  - The processor assignment for each node (numnp)
+  - The pointer array for the nodal graph (numnp+1)
+  - The adjacency lists for the nodal graph
+
+If the graph file name is not given explicitly, we make a file of the
+form path + "graph.foo" for an input file path + "Ifoo".

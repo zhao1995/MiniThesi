@@ -1,0 +1,47 @@
+# Makefile for build petsc
+# version 1.2
+
+#CMAKE_DIR=cmake-2.8.12.2-Linux-i386
+#CMAKE_DIR=cmake
+
+help:
+	@echo ""
+	@echo "Use the following command to build PETSc:"
+	@echo " make petsc"
+	@echo ""
+
+check:
+	@if [ -z $(PETSC_DIR) ]; then echo '$$PETSC_DIR not set! Quit' ; false ; fi
+	@if [ ! -d $(PETSC_DIR) ]; then echo '$$PETSC_DIR not found or not a directory! Quit' ; false ; fi
+	@if [ -z $(MKL_DIR) ]; then echo '$$MKL_DIR not set! Quit' ; false ; fi
+	@if [ ! -e $(MKL_DIR) ]; then echo '$$MKL_DIR not found or not a directory! Quit' ; false ; fi
+
+petsc: petsc-3.4.3 check $(CMAKE_DIR)
+#	cd petsc-3.4.3; ./configure --configModules=PETSc.Configure --optionsModule=PETSc.compilerOptions PETSC_ARCH=linux-gnu-intel --with-cc=gcc --with-fc=ifort --with-blas-lapack-dir=$(MKL_DIR) --download-parmetis --download-metis --download-openmpi ; make all; make test
+	cd petsc-3.4.3; ./configure --configModules=PETSc.Configure --optionsModule=PETSc.compilerOptions PETSC_ARCH=linux-gnu-intel --with-cc=gcc --with-fc=ifort --with-blas-lapack-dir=$(MKL_DIR) --download-parmetis --download-metis --download-openmpi ; make all; make test
+	@echo
+	@echo PETSc successfully build. Now you can build FEAP
+	@echo
+
+petsc-3.4.3: petsc-3.4.3.tar.bz2
+	tar xjf petsc-3.4.3.tar.bz2
+
+petsc-clean:
+	@if [ -z $(PETSC_DIR) ]; then echo '$$PETSC_DIR not set! Quit' ; false ; fi
+	@if [ ! -d $(PETSC_DIR) ]; then echo '$$PETSC_DIR not found or not a directory! Quit' ; false ; fi
+	rm -rf $(PETSC_DIR)
+#	tar xjf petsc-3.4.3.tar.bz2
+
+cmake-2.8.12.2-Linux-i386: cmake-2.8.12.2-Linux-i386.tar.gz
+	tar xzf cmake-2.8.12.2-Linux-i386.tar.gz
+
+cmake-2.8.12.2: cmake-2.8.12.2.tar.gz
+	tar xzf cmake-2.8.12.2.tar.gz
+
+cmake-clean:
+	rm -fr cmake-2.8.12.2 cmake
+
+cmake: cmake-2.8.12.2
+	cd cmake-2.8.12.2; ./configure --prefix=../cmake --parallel=8; make; make install
+
+allclean: petsc-clean cmake-clean

@@ -1,0 +1,66 @@
+FEAP
+  0  0  0  2  3  9
+
+MATErial 1
+  SOLID
+    ELASTIC ISOTROPIC  100    0.4995
+    THERMAL ISOTROPIC  0.25   0.0
+    FOURIER ISOTROPIC  10.0   1.0
+    DENSITY MASS       0.10
+    MIXED
+
+BLOCK
+  CARTESIAN 20 10
+  QUADrilateral 9
+    1  0.0  0.0
+    2  5.0  0.0
+    3  5.0  2.5
+    4  0.0  2.5
+
+  CBOUN
+    NODE 5 0 1 1
+    NODE 5 5 1 0
+
+  EBOU
+    1  0  0  0  1
+ 
+  EDIS
+    1  0  0  0  1
+
+END
+
+ORDER
+  0  0  1
+
+
+BATCH
+  OPTI          ! Reduces profile
+  DT,,0.005
+  TRANs BACK
+  PLOT DEFOrm
+  PLOT FACT 0.7 ! to keep plot in window
+  LOOP,,20
+    TIME
+    LOOP,,5
+!     UTANG,,1  ! Includes coupling tangent -- converges in 1-iteration
+      TANG,,1   ! Needs 2-iterations to converge (since no
+    NEXT        !             compling tangent is included)
+    PLOT,WIPE
+    PLOT FRAMe 1
+    PLOT RANG 0.4 0.9
+    PLOT CONT 3 ! Temperature contours
+    PLOT FRAMe 2
+    PLOT RANG -1.0 0.2
+    PLOT STRE 1 ! 11-Stress contours
+    PLOT FRAMe 3
+    PLOT RANG -1.25 0.0
+    PLOT CONT 1 ! Displacement contours
+    PLOT FRAMe 4
+    PLOT RANG -1.0 0.2
+    PLOT STRE 2 ! 22-Stress contours
+  NEXT
+END
+
+INTEractive
+
+STOP

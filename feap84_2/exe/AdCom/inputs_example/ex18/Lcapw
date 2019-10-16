@@ -1,0 +1,25 @@
+
+  --------------------------------- START OF FEAP LOG ----------------------------------
+
+  INPUT FILE NAME: Icapw                                                                                                                           
+
+  MESH INPUT RECORDS
+  ------------------
+     COORdinates     ALL            
+     ELEMents        ALL            
+     BOUNdary        conditions     
+     Parameters                     
+     MATErial        1              
+     Parameters                     
+     ROTA            OPTI           
+     END                            
+
+  --------------------------------- END OF MESH INPUTS ---------------------------------
+
+
+  SOLUTION SUMMARY
+  ----------------
+
+  Load    Total     Solution      Time     Residual Norm        Energy Norm     CPU Time
+  Step  Tang+Forms      Time      Incr.  Initial     Final   Initial     Final (Seconds)
+  --------------------------------------------------------------------------------------

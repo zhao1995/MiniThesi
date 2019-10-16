@@ -1,0 +1,15 @@
+Parameters
+  LL  =  20.0
+  BB  =  20.0
+  TT  =  20.0
+  j   =  30
+  k   =  j
+  l   =  j
+  u   =  0.02
+  E   =  210000
+  nu  =  0.23
+ 
+MATErial       1
+SOLID elmt     0   0   0   0
+    ELAStic ISOTropic E nu
+     

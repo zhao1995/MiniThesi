@@ -1,0 +1,6 @@
+nocount
+ufeap * * Test on file input for fine scale.
+
+include solve_mpi
+
+stop

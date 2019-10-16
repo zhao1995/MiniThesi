@@ -1,0 +1,27 @@
+parameter 
+  n = 8
+
+include Iplate_cl
+
+parameter 
+  n = 16
+
+include Iplate_cl
+
+parameter 
+  n = 32
+
+include Iplate_cl
+
+parameter 
+  n = 64
+
+include Iplate_cl
+
+parameter 
+  n = 128
+
+include Iplate_cl
+
+inter
+stop

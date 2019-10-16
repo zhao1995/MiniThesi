@@ -1,0 +1,10 @@
+User Sparse Solver Library
+umacr1.f
+12/5/2013
+
+USSL usage:
+
+USSL,MKLP,v1,v2
+  Turns on MKL Pardiso solver
+  v1=1 will print statistics to screen
+  v2=1 sets the symmetric solver to symmetric positive definite (default is indefinite)

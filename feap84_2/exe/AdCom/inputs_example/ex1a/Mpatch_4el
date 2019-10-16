@@ -1,0 +1,20 @@
+Parameters
+  L1 = 250
+  L2 = 550
+  Y0 = 0.05
+  r  = 100
+  s  = 10
+  tt=40
+  dt=1/tt
+  uu=1
+!
+MATErial       1
+ user   1   0   0   0
+    ELEMent SOLId 1
+    FORMulation DISPlacement
+    QUADrature SOLId 1
+    TANGent UNSYmmetric
+    DEFOrmations LARGe
+    BODY CONStant 0
+    CONStitutive 1 L1 L2 Y0 r s
+     

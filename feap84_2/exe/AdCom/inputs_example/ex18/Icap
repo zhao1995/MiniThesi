@@ -1,0 +1,162 @@
+feap * * Cap example for linear shells
+  0 0 0 3  6  4
+
+noprint
+
+param
+ e  = 10d8
+ nu = 0.3
+
+mate
+  shell
+    elastic isotropic e nu
+    thickness shell   2.36
+    load  normal      284
+    finite
+
+param
+  r = 56.30
+  an = 39.0
+  s = r*sind(an)
+  h = r*cosd(an)
+  a = s*sind(45)
+  b = 0.45*s
+  c = 0.40*s
+  n = 4
+  n = 8
+  n = 32
+  n = 16
+
+snode
+  1 0 0 0
+  2 s 0 0
+  3 a a 0
+  4 0 s 0
+  5 b 0 0
+  6 c c 0
+  7 0 b 0
+
+side
+  polar 2 3 1
+  polar 3 4 1
+
+! First Quadrant
+
+trans
+  1 0 0
+  0 1 0
+  0 0 1
+  0 0 0
+
+blend
+  cap n n
+   quad 4
+   1 5 6 7
+
+blend
+  cap n n
+   quad 4
+    5 2 3 6
+
+blend
+  cap n n
+   quad 4
+    6 3 4 7
+
+
+! Second Quadrant
+
+trans
+  0 1 0
+ -1 0 0
+  0 0 1
+  0 0 0
+
+blend
+  cap n n
+   quad 4
+   1 5 6 7
+
+blend
+  cap n n
+   quad 4
+    5 2 3 6
+
+blend
+  cap n n
+   quad 4
+    6 3 4 7
+
+
+! Third Quadrant
+
+trans
+ -1  0 0
+  0 -1 0
+  0  0 1
+  0  0 0
+
+blend
+  cap n n
+   quad 4
+   1 5 6 7
+
+blend
+  cap n n
+   quad 4
+    5 2 3 6
+
+blend
+  cap n n
+   quad 4
+    6 3 4 7
+
+
+! Fourth Quadrant
+
+trans
+  0 -1  0
+  1  0  0
+  0  0  1
+  0  0  0
+
+blend
+  cap n n
+   quad 4
+   1 5 6 7
+
+blend
+  cap n n
+   quad 4
+    5 2 3 6
+
+blend
+  cap n n
+   quad 4
+    6 3 4 7
+
+ebou
+ 3 h 0 0 1
+
+cbou
+ node  s  0 h 0 1 0
+ node -s  0 h 0 1 0
+ node  0  s h 1 0 0
+ node  0 -s h 1 0 0
+
+
+rota  opti 2
+
+end
+
+tie
+
+batch
+  loop,,10
+    tang,,1
+  next
+  plot cont 3
+end
+
+inter
+stop

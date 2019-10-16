@@ -1,0 +1,142 @@
+ feap * * Example 13: Periodic boundary conditions on rectangular block         
+
+     Solution date: Sat Jan 12 19:05:07 2019
+
+              Release 8.4.1d      
+              01 January 2014     
+
+     Input Data Filename: Iex13                                                                                                                           
+
+     Number of Nodal Points  - - - - - - :     2665
+     Number of Elements  - - - - - - - - :     2160
+
+     Spatial Dimension of Mesh - - - - - :        2
+     Degrees-of-Freedom/Node (Maximum) - :        2
+     Equations/Element       (Maximum) - :        0
+     Number Element Nodes    (Maximum) - :        4
+
+     Number of Material Sets - - - - - - :        2
+     Number Parameters/Set   (Program) - :      300
+     Number Parameters/Set   (Users  ) - :      150
+
+     Material  Number   1 for Element Type: solid
+                         
+
+                                                                          
+
+     T w o   D i m e n s i o n a l   S o l i d   E l e m e n t
+
+     M e c h a n i c a l   P r o p e r t i e s
+
+          Plane Strain  Analysis
+
+          Modulus E        2.00000E+03
+          Poisson ratio    0.25000
+
+          Thickness        1.00000E+00
+          Density          0.00000E+00
+
+          1-Gravity Load   0.00000E+00
+          2-Gravity Load   0.00000E+00
+          3-Gravity Load   0.00000E+00
+
+     C o n s t i t u t i v e    S t a r t
+
+          Start state  : Elastic
+
+     E l e m e n t    M o d e l
+
+          Formulation  : Small Deformation.
+          Element type : Displacement
+          Plot Output  : On
+
+     W a r n i n g s   &   E r r o r s
+          Material density is zero.
+
+     Material  Number   2 for Element Type: solid
+                         
+
+                                                                          
+
+     T w o   D i m e n s i o n a l   S o l i d   E l e m e n t
+
+     M e c h a n i c a l   P r o p e r t i e s
+
+          Plane Strain  Analysis
+
+          Modulus E        4.00000E+02
+          Poisson ratio    0.25000
+
+          Thickness        1.00000E+00
+          Density          0.00000E+00
+
+          1-Gravity Load   0.00000E+00
+          2-Gravity Load   0.00000E+00
+          3-Gravity Load   0.00000E+00
+
+     C o n s t i t u t i v e    S t a r t
+
+          Start state  : Elastic
+
+     E l e m e n t    M o d e l
+
+          Formulation  : Small Deformation.
+          Element type : Displacement
+          Plot Output  : On
+
+     W a r n i n g s   &   E r r o r s
+          Material density is zero.
+
+     Cauchy mechanical periodic boundary condition
+
+     Tie all nodes with common coordinates
+
+
+      Gap Tolerance =  1.9371E-05
+
+
+
+       T i e  - - -  N o d a l   C o o r d i n a t e s
+
+          The following nodes have been deleted:
+
+
+        408 nodes merged by the tie command
+
+
+     E l e m e n t   S i z e   V a l u e s
+          h-minimum =  8.3333E-02
+          h-maximum =  2.7501E-01
+
+  ---------------------------- END OF MESH INPUTS ----------------------------
+
+     Solution Commands       Variable 1  Variable 2  Variable 3
+       tang                  1.0000E+00  0.0000E+00  0.0000E+00
+       plot      deform      0.0000E+00  0.0000E+00  0.0000E+00
+       plot      stre        4.0000E+00  0.0000E+00  0.0000E+00
+ *Command   1 * tang                v:   1.00       0.00       0.00    
+                                                           t=     0.01     0.00
+   Residual norm =     1.4806624E+04    1.0000000E+00      t=     0.02     0.00
+ Condition check: D-max 0.6268E+04; D-min 0.4913E+03; Ratio 0.1276E+02
+ Maximum no. diagonal digits lost:  1
+   End Triangular Decomposition                            t=     0.04     0.00
+   Number of operations =  369354 plus      248 Mega-ops
+  Time: CPU =         0.04 , System =         0.00
+--> SOLVE AT 10348.29 Mflops. Time=        0.02
+   Energy convergence test
+    Initial   =    4.514852724435812E+04 Current   =    4.514852724435812E+04
+    Relative  =    1.000000000000000E+00 Tolerance =    1.000000000000000E-16
+ *Command   2 * plot deform         v:   0.00       0.00       0.00    
+                                                           t=     0.04     0.00
+  -> Plots on deformed mesh with scale: 1.00000E+00
+                     Eigenvector scale: 0.00000E+00
+ *Command   3 * plot stre           v:   4.00       0.00       0.00    
+                                                           t=     0.04     0.00
+    Minimum is   2.15E+01 Maximum is   5.71E+01
+   ------ Contour Values for Plot ------
+      2.447993E+01   2.744142E+01   3.040291E+01   3.336440E+01   3.632588E+01
+      3.928737E+01   4.224886E+01   4.521034E+01   4.817183E+01   5.113332E+01
+      5.409480E+01
+ *End of Solution Execution*                               t=     0.05     0.00
+ *Command   1 * plot                v:   0.00       0.00       0.00    
+                                                           t=     0.06     0.00

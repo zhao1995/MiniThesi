@@ -1,0 +1,15 @@
+nocount
+feap * * RVE PLOTS
+include Itest
+
+batch
+  mesh
+end
+  periodic cauchy file
+     Pblk3a.str
+
+end
+
+inter
+
+stop
