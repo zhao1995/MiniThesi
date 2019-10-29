@@ -1,9 +1,0 @@
-
-  --------------------------------- START OF FEAP LOG ----------------------------------
-
---> ERROR in BLOCk generation: Element type brick          
-    with  20 nodes greater than   8 specified on control record
-     0     0    0  0.000E+00  0.00E+00  0.00E+00            0.00E+00                0.00
-
- Total     0    0
-  ---------------------------------- END OF FEAP LOG -----------------------------------

@@ -1,7 +1,7 @@
 !$Id:$
       subroutine umacr1(lct,ctl)
 
-      use omp_lib
+      USE OMP_LIB
 
 !      * * F E A P * * A Finite Element Analysis Program
 
@@ -37,7 +37,6 @@
       logical   pcomp,setvar,palloc,flags(5), pardfl
       character lct*15,tname*5
       real*8    ctl(3)
-      
 
       save
 
@@ -95,11 +94,11 @@
 !         Fill IPARM with values for solver
 
 !-----[--.----+----.----+----.-----------------------------------------]
-!          iparm( 1)    =  0           ! I: Filled with default values
+!         iparm( 1)    =  0           ! I: Filled with default values
           iparm( 1)    =  1           ! I: Furnishing values 2 to 64
-          iparm( 2)    =  3           ! I: Fill-in reordering from METIS
+          iparm( 2)    =  2           ! I: Fill-in reordering from METIS
 !         iparm( 3)    =  nprocessor  ! I: Numbers of processors
-          iparm( 3)    =  4           ! Reserved: set to zero
+          iparm( 3)    = 16           ! Reserved: set to zero
           iparm( 4)    =  0           ! I: No iterative-direct algorithm
           iparm( 5)    =  0           ! I: No fillin reduced permutation
           iparm( 6)    =  0           ! I: Solution x(1:neq)
@@ -147,14 +146,6 @@
 
           if(ior.lt.0 .or. pardfl) then
             write(*,'(a)') ' --> PARDISO solver activated'
-
-               ! Das nur 1x ausgeben (beim Master Thread)
-               if( omp_get_thread_num() == 0 ) then
-                 write( *, * ) omp_get_num_threads(), 'Thread(s)'
-               end if      
-
-           ! Das bei jedem Thread ausgeben
-           write( *, * ) 'active: ', omp_get_thread_num()     
             pardfl = .false.
           endif
 

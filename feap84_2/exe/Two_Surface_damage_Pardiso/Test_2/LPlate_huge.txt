@@ -1,0 +1,31 @@
+
+  --------------------------------- START OF FEAP LOG ----------------------------------
+
+  INPUT FILE NAME: IPlate_huge.txt                                                                                                                 
+
+  MESH INPUT RECORDS
+  ------------------
+     PARAMETER                      
+     MATErial        1              
+     BLOCk                          
+     EBOUndary                      
+     EDIS                           
+     END                            
+
+  --------------------------------- END OF MESH INPUTS ---------------------------------
+
+
+  SOLUTION SUMMARY
+  ----------------
+
+  Load    Total     Solution      Time     Residual Norm        Energy Norm     CPU Time
+  Step  Tang+Forms      Time      Incr.  Initial     Final   Initial     Final (Seconds)
+  --------------------------------------------------------------------------------------
+     1     2    0  1.000E+00  1.00E+00  9.58E+04  1.91E-10  5.29E+04  2.11E-25     15.30
+     2     2    0  2.000E+00  1.00E+00  9.58E+04  2.03E-10  5.29E+04  2.28E-25     30.22
+     3     2    0  3.000E+00  1.00E+00  9.58E+04  2.08E-10  5.29E+04  2.35E-25     45.10
+     4     2    0  4.000E+00  1.00E+00  9.58E+04  2.28E-10  5.29E+04  2.64E-25     59.93
+     5     2    0  5.000E+00  1.00E+00  9.58E+04  2.41E-10  5.29E+04  2.84E-25     74.76
+
+ Total    10    0
+  ---------------------------------- END OF FEAP LOG -----------------------------------

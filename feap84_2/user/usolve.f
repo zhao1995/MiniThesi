@@ -49,8 +49,6 @@
       integer (kind=4) :: i, npzsv
 
       save
-      
-      call omp_set_num_threads(4)
 
 !     Presolve setups
 

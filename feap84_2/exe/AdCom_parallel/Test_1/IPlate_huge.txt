@@ -1,0 +1,63 @@
+FEAP * * damage
+0 0 0 3 3 8
+! dummy dummy dummy dgf(space) dgf(sol) nodes per element
+
+PARAMETER
+  LL  =  20.0  
+  BB  =  20.0
+  TT  =  20.0
+  j   =  25
+  k   =  j
+  l   =  j
+  u   =  0.02
+  E   =  210000
+  nu  =  0.23
+
+MATErial,1
+  SOLID
+    ELAStic ISOTropic E nu
+  
+
+BLOCk
+ CART,j,k,l,,,1,
+ 1,0,0,0
+ 2,LL,0,0
+ 3,LL,BB,0
+ 4,0,BB,0
+ 5,0,0,TT
+ 6,LL,0,TT
+ 7,LL,BB,TT
+ 8,0,BB,TT
+  
+EBOUndary
+  1,0.0,1,0,0      
+  2,0.0,0,1,0
+  3,0.0,0,0,1
+  1, LL ,1,0,0
+  
+  
+EDIS
+  1,LL,u,0.0,0.0
+  
+END
+
+TIE
+
+!INTEractive
+
+BATCh
+  opti
+  prop,,1
+  dt,,1
+  PARD,,,0
+  loop time 2
+   time
+   nopr
+   loop iter 35  
+     tang,,1
+   next iter
+   prin
+  next time
+END
+
+STOP

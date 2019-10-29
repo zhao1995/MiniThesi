@@ -1,0 +1,56 @@
+FEAP * * 1-Element Patch Test
+,,,3,3,4
+!
+! Control record: (NUMNP) Number of nodal points, (NUMEL) Number of elements, (NUMMAT) Number of material property sets, (NDM) Space dimension of mesh, (NDF) Maximum number of unknowns per node, (NEN) Maximum number of nodes per element
+!
+MATErial,1
+ SOLId
+ plane strain
+   ELAStic isotr 1000.0 0.25
+
+! MATErial,1
+!    USER,1
+!    SMST MATE 1000.0 0.25 0.0
+
+COORdinates
+1 0 0.0 0.0 0.0            
+2 0 10.0 0.0 0.0            
+3 0 0.0 10.0 0.0            
+4 0 0.0 0.0 10.0            
+   
+
+ELEMents
+1 1 1 1 2 3 4
+
+
+BOUNdary restraints 
+1 0 1 1 0
+4 0 1 1 0
+3 0 1 0 0
+
+FORCes
+2 0 8.0 0.0 0.0
+
+END
+
+
+BATCh
+prop,,1
+dt,,0.01
+  PARD,,,1
+  LOOP iter 100
+   time
+    loop,,10
+    TANG,,1
+    next
+  NEXT iter
+  DISPlacement ALL
+  STREss ALL
+    plot mesh
+    plot boun
+    plot cont
+    plot load
+END
+
+inte 
+stop
